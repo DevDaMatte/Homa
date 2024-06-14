@@ -3,6 +3,7 @@ package com.demoex.hamster.Domain.Models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +15,8 @@ public class Hamster {
 
     private String name;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
-    private Date birthdate;
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime birthdate;
 
     private String color;
 
