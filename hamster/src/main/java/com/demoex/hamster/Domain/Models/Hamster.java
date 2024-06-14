@@ -20,6 +20,11 @@ public class Hamster {
 
     private String color;
 
-    @OneToMany(mappedBy = "hamster", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany
+    @JoinTable(
+            name = "hamster_characteristic",
+            joinColumns = @JoinColumn(name = "hamster_id"),
+            inverseJoinColumns = @JoinColumn(name = "characteristic_id")
+    )
     private List<Characteristic> characteristics;
 }

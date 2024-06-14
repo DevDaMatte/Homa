@@ -18,6 +18,14 @@ public class CharacteristicController {
     public Characteristic addCharacteristicToHamster(@PathVariable int hamsterId, @RequestBody Characteristic characteristic) {
         return characteristicService.addCharacteristicToHamster(hamsterId, characteristic);
     }
+    @PostMapping
+    public Characteristic createCharacteristic(@RequestBody Characteristic characteristic) {
+        return characteristicService.addCharacteristic(characteristic);
+    }
+    @DeleteMapping("{id}")
+    public void removeCharacteristic(@PathVariable int id) {
+        characteristicService.deleteCharacteristicById(id);
+    }
 
     @PutMapping("/{hamsterId}/{characteristicId}")
     public Characteristic updateHamsterCharacteristic(@PathVariable int hamsterId, @PathVariable int characteristicId, @RequestBody Characteristic updatedCharacteristic) {
