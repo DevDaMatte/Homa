@@ -1,8 +1,6 @@
 package com.demoex.hamster.WEB.Controller;
 
-import com.demoex.hamster.Domain.Models.Characteristic;
 import com.demoex.hamster.Domain.Models.Hamster;
-import com.demoex.hamster.Infrastructure.services.CharacteristicService;
 import com.demoex.hamster.Infrastructure.services.HamsterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +17,6 @@ public class HamsterController {
 
     @Autowired
     private HamsterService hamsterService;
-
-    @Autowired
-    private CharacteristicService characteristicService;
 
     @GetMapping
     public List<Hamster> getAllHamsters() {
@@ -46,20 +41,5 @@ public class HamsterController {
     @DeleteMapping("/{id}")
     public void deleteHamster(@PathVariable int id) {
         hamsterService.deleteHamster(id);
-    }
-
-    @PostMapping("/{hamsterId}/characteristics")
-    public Characteristic addCharacteristicToHamster(@PathVariable int hamsterId, @RequestBody Characteristic characteristic) {
-        return characteristicService.addCharacteristicToHamster(hamsterId, characteristic);
-    }
-
-    @PutMapping("/{hamsterId}/characteristics/{characteristicId}")
-    public Characteristic updateHamsterCharacteristic(@PathVariable int hamsterId, @PathVariable int characteristicId, @RequestBody Characteristic updatedCharacteristic) {
-        return characteristicService.updateHamsterCharacteristic(hamsterId, characteristicId, updatedCharacteristic);
-    }
-
-    @DeleteMapping("/{hamsterId}/characteristics/{characteristicId}")
-    public void deleteCharacteristicFromHamster(@PathVariable int hamsterId, @PathVariable int characteristicId) {
-        characteristicService.deleteCharacteristicFromHamster(hamsterId, characteristicId);
     }
 }
